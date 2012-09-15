@@ -104,11 +104,193 @@ end
 	</pre>  
     </article>
   </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Aprender Ruby</h2>
+    </hgroup>
+    <article>
+      <iframe data-src="http://tryruby.org/"></iframe>
+    </article>
+  </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Gemas</h2>
+    </hgroup>
+    <article>
+      <ul >
+		<li>Paquetes listos para usar</li>
+		<li>Fácil instalación y manejo</li>
+		<li>Funcionalidad hecha y probada</li>
+		<li><a href="http://rubygems.org">RubyGems.org</a> y <a href="https://www.ruby-toolbox.com/">The Ruby Toolbox</a></li>			
+	  </ul>
+    </article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/ror.png" height="128px"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Ruby on Rails</h2>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2><img src="images/ror.png" height="70px"> ¿Qué es RoR?</h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Es un framework</li>
+        <li>Basado en Ruby</li>
+        <li>Permite la construcción <b>fácil y rápida</b> de aplicaciones web</li>
+        <li>Usado en grandes proyectos<br />
+				<img src="images/groupon.png" height="100px">
+		</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>¿Por qué un framework?</h2>
+    </hgroup>
+    <article>
+      <ul class="">
+        <li>La programación <i>más complicada</i> ya <b>está lista</b></li>
+		<ul>
+			<li>Arquitectura básica <b>probada</b></li>
+			<li>El programador se preocupa de lo importante: <b>Funcionalidad diferenciadora</b></li>			
+		</ul>
+		<li>Preocuparse por el código, no la configuración</li>
+		<li>Templates (vistas reutilizables)</li>
+		<li><b>Rapidez de desarrollo</b></li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>PHP vs Rails</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="php">
+$db = new phpDB();
+$db->connect();
+if( $_GET['action'] == 'create' ) {
+	$db->exec('INSERT INTO alumnos (nombre, username, password, rol, fecha_nacimiento)'
+  .' VALUES ($1, $2, $3, $4, $5)'
+  , array($_POST['nombre'], $_POST['username'], $_POST['password'], $_POST['rol'], $_POST['fecha']));
+	$db->close();
+  header('Location: ../new_alumno.php?success=true');
+</pre>
+
+<pre class="prettyprint" data-lang="ruby">
+def create
+  @usuario = Usuario.new(params[:usuario])
+  @usuario.save
+end
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><img src="images/ror.png" height="70px"> Comenzando con Rails</h2>
+    </hgroup>
+    <article>
+        <h3><b>Windows</b></h3>
+		<p>Instalador one-click: <a href="http://railsinstaller.org/">RailsInstaller.org</a></p>
+        <h3><b>Linux</b></h3>
+		<p>Instalar <a href="https://rvm.io/rvm/install/">RVM</a> con rails</p>
+<pre class="prettyprint" data-lang="sh">
+curl -L https://get.rvm.io | bash -s stable --rails
+</pre>
+      <h3>Instalar un Editor</h3>
+	  <p><b><a href="http://www.sublimetext.com/2">SublimeText2</a></b></p>
+    </article>
+  </slide>
+  
+  <slide class="segue dark nobackground">   
+    <hgroup class="auto-fadein">
+      <h2>MVC</h2>
+	  <h3>Model View Controller</h3>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Modelo</h2>
+    </hgroup>
+    <article>
+      <ul class="">
+        <li><b>Objeto</b> que representa una <b>entidad</b></li>
+		<li>Cada modelo es una <b>tabla</b> de la base de datos</li>
+		<li>Contiene la lógica</li>
+      </ul>
+<pre class="prettyprint" data-lang="ruby">
+class Usuario <b>< ActiveRecord::Base</b>
+  attr_accesible :nombre, :rut, :edad
+end
+</pre>	  
+    </article>
+  </slide>  
+  
+  <slide>
+    <hgroup>
+      <h2>Vista</h2>
+    </hgroup>
+    <article>
+      <ul class="">
+        <li>Código que se renderiza en el navegador</li>
+		<li>Se convierte a HTML</li>		
+      </ul>
+<pre class="prettyprint" data-lang="html">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    <b>&lt;%= yield %&gt;</b>
+  &lt;/body&gt;
+&lt;/html&gt;  
+</pre>	  
+    </article>
+  </slide>  
+  
+  <slide>
+    <hgroup>
+      <h2>Controlador</h2>
+    </hgroup>
+    <article>
+      <ul class="">
+        <li>Intermediario entre vistas y modelos</li>
+		<li>Recibe la información enviada desde las vistas</li>
+		<li>Prepara las variables que se usarán en las vistas</li>		
+      </ul>
+<pre class="prettyprint" data-lang="ruby">
+class UsuarioController < ApplicationController
+  def index
+    @usuarios = Usuario.all
+  end
+end
+</pre>	  
+    </article>
+  </slide>  
+  
+  <slide>
+    <hgroup>
+      <h2>MVC</h2>
+    </hgroup>
+	<article class="flexbox vcenter">
+		<img src="images/mvc.png" width="800px">
+	</article>
+  </slide>  
+  
   <slide class="thank-you-slide segue nobackground">
     <article class="flexbox vleft auto-fadein">
       <h2>¿Preguntas?</h2>
-      <p>rpoo@alumnos.inf.utfsm.cl</p>
+      <p><a href="mailto:rpoo@alumnos.inf.utfsm.cl" class="white">rpoo@alumnos.inf.utfsm.cl</a></p>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
