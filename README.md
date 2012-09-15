@@ -1,4 +1,1 @@
-presentation-introduccion-rails
-===============================
-
-PresentaciÃ³n introductoria a Ruby on Rails
+== Presentación Introducción a Ruby on Rails ==
