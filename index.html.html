@@ -66,7 +66,7 @@ URL: https://code.google.com/p/io-2012-slides
       </ul>
     </article>
   </slide>
-  
+
   <slide>
     <hgroup>
       <h2><img src="images/ruby.png" height="50px"> Ruby: Ejemplos de código</h2>
@@ -286,6 +286,195 @@ end
 		<img src="images/mvc.png" width="800px">
 	</article>
   </slide>  
+  
+  <slide class="segue dark nobackground">   
+    <hgroup class="auto-fadein">
+      <h2>Más sobre Rails</h2>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Relaciones</h2>
+    </hgroup>
+	<article>
+<pre class="prettyprint" data-lang="ruby">
+has_many
+has_one
+belongs_to
+</pre>		
+
+<footer class="source">Más: <a href="http://guides.rubyonrails.org/association_basics.html
+">Ruby on Rails Guides: Association Basics</a></footer>
+	</article>
+  </slide>    
+  
+    <slide>
+    <hgroup>
+      <h2>Relaciones</h2>
+    </hgroup>
+	<article>
+	<ul class="build">
+		<li>Se tiene un <b>User</b></li>
+<pre class="prettyprint" data-lang="ruby">
+class User < ActiveRecord::Base
+  <b>has_many :orders</b>
+end
+</pre>	
+<li>Se tiene <b>Orders</b></li>
+<pre class="prettyprint" data-lang="ruby">
+class Order < ActiveRecord::Base
+  <b>belongs_to :user</b>
+end
+</pre>		
+<li>Para acceder a las Order de un User específico</li>
+<pre class="prettyprint" data-lang="ruby">
+<b>@orders = @user.orders</b>
+</pre>		
+<li><h4 class="red">Automágicamente!</h4></li>
+</ul>
+	</article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Relaciones</h2>
+	  <h3>Ojo!</h3>
+    </hgroup>
+	<article class="flexbox vcenter">
+	<h2>No olvidar crear claves foráneas en las tablas</h2><br />
+	<h5>La tabla Order debe tener una columna llamada <b>user_id</b></h5>
+	</article>
+  </slide>    
+  
+      <slide>
+    <hgroup>
+      <h2>Recuperar y Guardar Objetos</h2>
+    </hgroup>
+	<article>
+	<ul class="build">
+		<li>Buscar por <b>id</b>
+<pre class="prettyprint" data-lang="ruby">
+User.find(<b>id</b>)
+</pre>	
+<b>todas</b> las entidades tienen un id (<b>user_id</b>) automáticamente (y fecha de creación y actualización)</li>
+<li>Buscar por atributo
+<pre class="prettyprint" data-lang="ruby">
+User.find_by_<b>nombre</b>(<i>valor</i>)
+User.find_all_by_<b>nombre</b>(<i>valor</i>)
+</pre>		
+</li>
+</ul>
+<footer class="source">Más: <a href="http://guides.rubyonrails.org/active_record_querying.html
+">Ruby on Rails Guides: Active Record Querying</a></footer>
+	</article>
+  </slide>  
+  
+        <slide>
+    <hgroup>
+      <h2>Recuperar y Guardar Objetos</h2>
+    </hgroup>
+	<article>
+	<ul class="build">
+<li>Otros
+<pre class="prettyprint" data-lang="ruby">
+User.first
+User.where(:nombre => 'juan')
+User.where(:nombre => 'juan').order("created_at DESC").limit(5)
+</pre>		
+</li>
+<li>Guardar y eliminar
+<pre class="prettyprint" data-lang="ruby">
+@usuario.save
+@usuario.destroy
+</pre>		
+</li>
+</ul>
+<footer class="source">Más: <a href="http://guides.rubyonrails.org/active_record_querying.html
+">Ruby on Rails Guides: Active Record Querying</a></footer>
+	</article>
+  </slide>    
+  
+      <slide>
+    <hgroup>
+      <h2>Generación de código para vistas</h2>
+    </hgroup>
+	<article>
+	<ul class="build">
+		<li>link_to
+<pre class="prettyprint" data-lang="ruby">
+&lt;%= link_to 'Ingresar', login_url %&gt;
+</pre>		
+</li>
+<li>button_to
+<pre class="prettyprint" data-lang="ruby">
+&lt;%= button_to 'Salir', logout_url, <b>:method => :delete</b> %&gt;
+</pre>		
+</li>
+</ul>
+	</article>
+  </slide>
+  
+        <slide>
+    <hgroup>
+      <h2>Variables de Sesión</h2>
+    </hgroup>
+	<article>
+	<ul class="build">
+		<li>Guardar información en la sesión
+<pre class="prettyprint" data-lang="ruby">
+session[:user_id] = @usuario.id
+</pre>		
+</li>
+<li>Recuperar información de la sesión
+<pre class="prettyprint" data-lang="ruby">
+session[:user_id]
+</pre>		
+</li>
+</ul>
+	</article>
+  </slide>
+  
+    <slide>
+    <hgroup>
+      <h2>Templates</h2>
+    </hgroup>
+	<article>
+	<ul class="build">
+		<li>Todas las páginas parten de <b>app/views/layouts/application.html.erb</b></li>
+		<li>Gracias a la función <b>yield</b> se inserta el código dentro de las plantillas</li>		
+	</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Scaffolding</h2>
+    </hgroup>
+	<article>
+	<ul class="build">
+		<li>En el directorio del proyecto</li>
+<pre class="prettyprint" data-lang="bash">
+rails generate scaffold <b>User</b> name:string age:integer birthday:date
+rake db:migrate
+</pre>
+		<li>El scaffolding nos genera:
+		<ul>
+			<li>Tabla en la base de datos</li>
+			<li>Vistas para ver, crear y editar objetos</li>
+			<li>Controladores</li>
+		</ul>
+		</li>		
+	</ul>
+	</article>
+  </slide>
+  
+  <slide class="segue dark nobackground">   
+    <hgroup class="auto-fadein">
+      <h2>Pero... ¿qué edito?</h2>
+	  <h3>Demo time!</h3>
+    </hgroup>
+  </slide>
   
   <slide class="thank-you-slide segue nobackground">
     <article class="flexbox vleft auto-fadein">

@@ -2,7 +2,7 @@
 @import "compass/css3/columns";
 @import "compass/css3/user-interface";
 
-$social-tags: '#io12';
+$social-tags: 'BaseDatos2012';
 $brand-small-icon-size: 30px;
 
 $gray-1: #e6e6e6;
@@ -835,13 +835,6 @@ article.smaller {
 }
 
 /* ===== SLIDE CONTENT ===== */
-.logoslide {
-  img {
-    width: 383px;
-    height: 92px;
-  }
-}
-
 .segue {
   padding: $slide-left-right-padding $slide-left-right-padding * 2;
 
