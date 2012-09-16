@@ -20,7 +20,6 @@ var SLIDE_CONFIG = {
   presenters: [{
     name: 'Roberto Poo',
     company: 'Bases de Datos',
-    gplus: 'http://plus.google.com/102295858671454730594',
     twitter: '@xaroPoo',
     www: 'http://roberto.poo.cl',
     github: 'http://github.com/xaro'
