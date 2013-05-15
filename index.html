@@ -67,6 +67,19 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
+  <slide class="class="segue dark nobackground"">
+    <hgroup>
+      <h2><img src="images/ruby.png" height="50px"> Ruby: Data Structures </h2>
+    </hgroup>
+    <article>
+      <ul class="build fade">
+        <li>Arrays</li>
+        <li>Hashes</li>
+        <li>Symbols</li>
+      </ul>
+    </article>
+  </slide>
+
   <slide>
     <hgroup>
       <h2><img src="images/ruby.png" height="50px"> Ruby: Ejemplos de código</h2>
@@ -337,17 +350,17 @@ end
   </slide>
 
   <slide>
-    <hgroup>
-      <h2>Relaciones</h2>
-	  <h3>Ojo!</h3>
-    </hgroup>
+  <hgroup>
+    <h2>Relaciones</h2>
+  <h3>Ojo!</h3>
+  </hgroup>
 	<article class="flexbox vcenter">
 	<h2>No olvidar crear claves foráneas en las tablas</h2><br />
 	<h5>La tabla Order debe tener una columna llamada <b>user_id</b></h5>
 	</article>
   </slide>    
   
-      <slide>
+  <slide>
     <hgroup>
       <h2>Recuperar y Guardar Objetos</h2>
     </hgroup>
@@ -469,6 +482,39 @@ rake db:migrate
 	</article>
   </slide>
   
+  <slide>
+    <hgroup>
+      <h2>Comandos</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>En el directorio del proyecto</li>
+    <pre class="prettyprint" data-lang="bash">
+    rails new app
+    </pre>
+        <li>Crear nueva aplicación</li>
+    <pre class="prettyprint" data-lang="bash">
+    rails generate controller Cats index    
+    rails generate model Cat name:string lives:integer
+    </pre>
+        <li>Nombre de controlador en plural</li>
+        <li>Nombre de modelo en singular</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup class="auto-fadein">
+      <h2>Rutas</h2>
+    </hgroup>
+    <article class="flexbox vleft auto-fadein">
+      <ul>
+        <li><p> Archivo <b>routes.rb</b> maneja el funcionamiento de las rutas, dinámicamente.</p></li>
+        <li> Si se edita, debe reiniciarse el servidor.
+      </ul>
+    </article>
+  </slide>
+
   <slide class="segue dark nobackground">   
     <hgroup class="auto-fadein">
       <h2>Pero... ¿qué edito?</h2>
@@ -479,12 +525,10 @@ rake db:migrate
   <slide class="thank-you-slide segue nobackground">
     <article class="flexbox vleft auto-fadein">
       <h2>¿Preguntas?</h2>
-      <p><a href="mailto:rpoo@alumnos.inf.utfsm.cl" class="white">rpoo@alumnos.inf.utfsm.cl</a></p>
-	  <p>Presentación disponible en <a href="http://roberto.poo.cl/bd/rails-basics/" class="white">http://roberto.poo.cl/bd/rails-basics</a></p>
+      <p> Presentación creada por: <a href="mailto:rpoo@alumnos.inf.utfsm.cl" class="white"> rpoo@alumnos.inf.utfsm.cl </a>
+      <p>Editado por: <a href="mailto:sebastian.gonzalezm@alumnos.usm.cl" class="white">sebastian.gonzalezm@alumnos.usm.cl</a></p>
+	  <p>Presentación disponible en <a href="https://github.com/sebastialonso/presentation-introduccion-rails" class="white">https://github.com/sebastialonso/presentation-introduccion-rails</a></p>
     </article>
-    <p class="auto-fadein" data-config-contact>
-      <!-- populated from slide_config.json -->
-    </p>
   </slide>
 
   <slide class="backdrop"></slide>
